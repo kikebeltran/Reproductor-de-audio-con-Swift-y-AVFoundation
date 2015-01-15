@@ -36,10 +36,34 @@ class ViewController: UIViewController {
     
     
     
+    @IBOutlet weak var IBOuletPlay: UIButton!
+    @IBOutlet weak var IBOuletPause: UIButton!
+    @IBOutlet weak var IBOuletStop: UIButton!
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     //06 - DOCUMENTACION ENABLE RATE
     //06.2 - Accedemos al slider
     @IBOutlet weak var valorReproduccion: UISlider!
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +79,7 @@ class ViewController: UIViewController {
         
         reproductorAudio = AVAudioPlayer(contentsOfURL: elAudio, error: nil)
         
+        
         // 06.1 - Habilitamos el rate
         reproductorAudio.enableRate = true
         
@@ -64,7 +89,7 @@ class ViewController: UIViewController {
         
         
         
-        // 08
+        // 08 -
         var duracionTotal:Int = Int(reproductorAudio.duration)
         tiempoTotal.text = "\(duracionTotal)"
         
@@ -108,10 +133,28 @@ class ViewController: UIViewController {
     }
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // 03.2 - Creamos las acciones con el IBACtion
     @IBAction func botonPlay(sender: AnyObject) {
         // 05 - Rellenamos las acciones
         reproductorAudio.play()
+        
+        controlBotones(true)
     }
     
     // 03.3
@@ -121,17 +164,28 @@ class ViewController: UIViewController {
         
         tiempoActual.text = "0"
         controlReproduccion.value = 0
+        
+        controlBotones(false)
     }
 
     // 03.4
     @IBAction func botonPausa(sender: AnyObject) {
         reproductorAudio.pause()
+        
+        controlBotones(false)
     }
     
     // 03.5
     @IBAction func cambiarVolumen(sender: AnyObject) {
         reproductorAudio.volume = valorVolumen.value
     }
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -161,10 +215,48 @@ class ViewController: UIViewController {
           
             controlReproduccion.value = contadorFloat
         
+            
         }
 
         
     }
+    
+    
+    
+    
+    @IBAction func valueChangeControlReproduccion(sender: AnyObject) {
+        
+        
+        var tiempo: NSTimeInterval = NSTimeInterval(controlReproduccion.value)
+        
+        contador = Int(controlReproduccion.value)
+        
+        reproductorAudio.currentTime = tiempo
+        
+        
+    }
+    
+    
+    
+    
+    
+    func controlBotones(seEstaReproduciendo: Bool){
+    
+        IBOuletPlay.enabled = !seEstaReproduciendo
+        IBOuletPause.enabled = seEstaReproduciendo
+        IBOuletStop.enabled = seEstaReproduciendo
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 }

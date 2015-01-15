@@ -25,7 +25,7 @@
                                     <action selector="botonPlay:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="EWV-GW-6M3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mui-Ov-IY8">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mui-Ov-IY8">
                                 <rect key="frame" x="370" y="78" width="33" height="30"/>
                                 <state key="normal" title="Stop">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -34,7 +34,7 @@
                                     <action selector="botonStop:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="D5S-hg-QXM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkU-1a-zdS">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkU-1a-zdS">
                                 <rect key="frame" x="279" y="78" width="43" height="30"/>
                                 <state key="normal" title="Pausa">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -72,6 +72,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="VvP-hf-uRq"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="valueChangeControlReproduccion:" destination="vXZ-lx-hvc" eventType="valueChanged" id="MlH-FA-eiJ"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTb-4V-WPB">
                                 <rect key="frame" x="430" y="412" width="10" height="21"/>
@@ -113,6 +116,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="IBOuletPause" destination="CkU-1a-zdS" id="AQI-Xp-jWH"/>
+                        <outlet property="IBOuletPlay" destination="tfd-0t-Z5s" id="fOq-KZ-IJM"/>
+                        <outlet property="IBOuletStop" destination="Mui-Ov-IY8" id="0Rb-IU-ahJ"/>
                         <outlet property="controlReproduccion" destination="hPf-nW-SH7" id="dI5-AD-Ag8"/>
                         <outlet property="tiempoActual" destination="0IC-Bc-2cv" id="yJK-rq-cbq"/>
                         <outlet property="tiempoTotal" destination="rTb-4V-WPB" id="egw-cJ-XUa"/>
