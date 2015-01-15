@@ -21,6 +21,22 @@ class ViewController: UIViewController {
     @IBOutlet weak var valorVolumen: UISlider!
     
     
+    
+    
+    // 07 - Slider control reproduccion
+    @IBOutlet weak var controlReproduccion: UISlider!
+
+    // 07 - Labels de reproduccion
+    @IBOutlet weak var tiempoActual: UILabel!
+    
+    // 07 - Labels de reproduccion
+    @IBOutlet weak var tiempoTotal: UILabel!
+    
+    
+    
+    
+    
+    
     //06 - DOCUMENTACION ENABLE RATE
     //06.2 - Accedemos al slider
     @IBOutlet weak var valorReproduccion: UISlider!
@@ -44,10 +60,47 @@ class ViewController: UIViewController {
         
         reproductorAudio.prepareToPlay()
         
+
         
+        
+        
+        // 08
+        var duracionTotal:Int = Int(reproductorAudio.duration)
+        tiempoTotal.text = "\(duracionTotal)"
+        
+   
+
+        
+        // Control del slider
+        controlReproduccion.minimumValue = 0
+        
+        
+        var finSlider:Float = Float(reproductorAudio.duration)
+        controlReproduccion.maximumValue = finSlider
+        
+        
+        
+        // 08.1  NSTimer
+        var temporizador = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "actualizaControlReproduccion", userInfo: nil, repeats: true)
         
         
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -65,6 +118,9 @@ class ViewController: UIViewController {
     @IBAction func botonStop(sender: AnyObject) {
         reproductorAudio.stop()
         reproductorAudio.currentTime = 0
+        
+        tiempoActual.text = "0"
+        controlReproduccion.value = 0
     }
 
     // 03.4
@@ -86,6 +142,29 @@ class ViewController: UIViewController {
     
     
     
+    
+    
+    // 9 crear la funcion para el NSTimer
+    
+    var contador: Int = 0
+    
+    func actualizaControlReproduccion(){
+    
+        
+        if reproductorAudio.playing == true {
+        
+            contador += 1
+            tiempoActual.text = "\(contador)"
+            
+            
+            var contadorFloat: Float = Float(contador)
+          
+            controlReproduccion.value = contadorFloat
+        
+        }
+
+        
+    }
     
     
 }
