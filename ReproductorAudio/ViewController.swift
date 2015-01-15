@@ -11,6 +11,10 @@ import UIKit
 // 01 Importamos el framework
 import AVFoundation
 
+
+
+
+
 class ViewController: UIViewController {
 
     // 02 - Creamos el Objeto reproductor de audio
@@ -35,7 +39,7 @@ class ViewController: UIViewController {
     
     
     
-    
+    // 09 - Oulets para funcionamienrto de botones
     @IBOutlet weak var IBOuletPlay: UIButton!
     @IBOutlet weak var IBOuletPause: UIButton!
     @IBOutlet weak var IBOuletStop: UIButton!
@@ -154,6 +158,7 @@ class ViewController: UIViewController {
         // 05 - Rellenamos las acciones
         reproductorAudio.play()
         
+        // 11 - control de botones
         controlBotones(true)
     }
     
@@ -165,6 +170,7 @@ class ViewController: UIViewController {
         tiempoActual.text = "0"
         controlReproduccion.value = 0
         
+        // 11 - control de botones
         controlBotones(false)
     }
 
@@ -172,6 +178,7 @@ class ViewController: UIViewController {
     @IBAction func botonPausa(sender: AnyObject) {
         reproductorAudio.pause()
         
+        // 11 - control de botones
         controlBotones(false)
     }
     
@@ -223,7 +230,7 @@ class ViewController: UIViewController {
     
     
     
-    
+    // 10 - Slider cambiar de reproduccion
     @IBAction func valueChangeControlReproduccion(sender: AnyObject) {
         
         
@@ -239,6 +246,7 @@ class ViewController: UIViewController {
     
     
     
+    // 11 - funcion para controlar botones y luego se las pasamos a cada boton
     
     func controlBotones(seEstaReproduciendo: Bool){
     
